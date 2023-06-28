@@ -1,0 +1,81 @@
+-------------------------------
+create or replace function aracsayisi()
+returns int
+language plpgsql
+as
+$$
+declare
+   arac_count integer;
+begin
+   select count(*) 
+   into arac_count
+   from arabalar;
+   
+   return arac_count;
+end;
+$$;
+
+--------------------------------------
+create or replace function scootersayisi()
+returns int
+language plpgsql
+as
+$$
+declare
+   scooter_count integer;
+begin
+   select count(*) 
+   into scooter_count
+   from scooterlar;
+   
+   return scooter_count;
+end;
+$$;
+
+-----------------------------------
+create or replace function totalarac()
+returns int
+language plpgsql
+as
+$$
+declare
+	aracsayi integer;
+	scootersayi integer;
+   total_sayi integer;
+begin
+   select count(*) 
+   into aracsayi
+   from arabalar;
+   
+   select count(*) 
+   into scootersayi
+   from scooterlar;
+   
+   total_sayi=scootersayi+aracsayi;
+   return total_sayi;
+end;
+$$;
+----------------
+create or replace function benzinliarac()
+returns int
+language plpgsql
+as
+$$
+declare
+   abenzin integer;
+   sbenzin integer;
+   totalbenzin integer;
+begin
+   select count(*) 
+   into abenzin
+   from arabalar where yakit_id=2;
+   
+   select count(*) 
+   into sbenzin
+   from scooterlar where yakit_id=2;
+   
+   totalbenzin=abenzin+sbenzin;
+   
+   return totalbenzin;
+end;
+$$;

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "hgUcA+dBqFjNkEgxKn0AjnSl+HaXHiNzy+L7dnqgrZjMrhZI+GVqmFFGnb+CMczrWuzKj4V3B6m0ewNf8et90g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\vtys_proje\\Car_Rental_Automation\\Car_Rental_Automation\\Car_Rental_Automation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\berka\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\berka\\.nuget\\packages\\npgsql\\7.0.0\\npgsql.7.0.0.nupkg.sha512",
+    "C:\\Users\\berka\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

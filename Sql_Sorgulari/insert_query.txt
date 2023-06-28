@@ -1,0 +1,33 @@
+select araba_id,ama.a_marka_adi,amo.a_model_adi,r.renk_adi,att.a_arac_tipi,arac_yasi,yt.yakit_turu,a_kira_id from arabalar ar
+inner join araba_markalari ama on ar.a_marka_id=ama.a_marka_id
+inner join araba_modelleri amo on ar.a_model_id=amo.a_model_id
+inner join renkler r on ar.renk_id=r.renk_id
+inner join araba_tipi att on ar.a_tipi_id=att.a_tipi_id
+inner join yakit_turu yt on ar.yakit_id=yt.yakit_id
+
+select*from araba_modelleri
+
+insert into scooter_modelleri values (1,1,'PCX 150'),(2,1,'PCX 125'),(3,2,'Tricity 155'),(4,2,'X-MAX 250')
+
+insert into scooter_markalari values (1,'Honda'),(2,'Yamaha')
+
+insert into arabalar values (1,1,2,2,1,2019,2),(2,2,4,4,1,2020,2)
+
+insert into araba_modelleri values (1,1,'A3'),(2,1,'A4'),(3,2,'320'),(4,2,'520'),(5,3,'CLA 200'),(6,3,'A180'),(7,4,'Egea'),(8,4,'Fiorino')
+
+insert into araba_markalari values (1,'Audi'),(2,'BMW'),(3,'Mercedes'),(4,'Fiat')
+
+insert into araba_tipi values (1,'Sedan'),(2,'HatchBack'),(3,'Station Vagon'),(4,'Ticari')
+
+insert into musteriler values (1,'Mehmet Cinar',25,'15874258941','05355353535','Cicek Sokak No:11/2 Beylikduzu/Istanbul',1),(2,'Ebru Yildirim',30,'35748125478','05425771545','Menekse Sok No:10/4 Serdivan/Sakarya',1)
+
+insert into ulkeler values (1,'Turkiye'),(2,'Almanya'),(3,'Fransa'),(4,'Amerika')
+
+insert into yakit_turu values (1,'Dizel'),(2,'Benzin'),(3,'LPG'),(4,'Elektrik')
+
+insert into renkler values (1,'Beyaz'),(2,'Siyah'),(3,'Gri'),(4,'Kirmizi')
+
+insert into gorevler values (1,'Yonetici',25000,8),(2,'İşçi',7000,8)
+
+insert into personel values (1,'Busra Ertekin',12992643400,1,'05533622634','busra','12345')
+insert into personel values (2,'Berkan Acikgoz',39089048764,2,'05343921986','berkan','berkan123')

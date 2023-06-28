@@ -1,0 +1,142 @@
+create table Gorevler(
+	gorev_id int PRIMARY KEY,
+	gorev_adi varchar(50),
+	maas int,
+	calisma_saatleri int
+);
+create table Personel(
+	p_id int PRIMARY KEY,
+	p_ad_soyad varchar(50),
+	p_tc_no bigint NOT NULL,
+	gorev_id int,
+	p_telefon varchar(11),
+	p_kullaniciadi varchar(15) NOT NULL,
+	p_sifre varchar(24) NOT NULL,
+	CONSTRAINT fk_gorev_id
+		FOREIGN KEY(gorev_id)
+			REFERENCES Gorevler(gorev_id)
+);
+create table Renkler(
+	renk_id int PRIMARY KEY,
+	renk_adi varchar(20)
+);
+create table Yakit_Turu(
+	yakit_id int PRIMARY KEY,
+	yakit_turu varchar(30)
+);
+create table Araba_Tipi(
+	a_tipi_id int PRIMARY KEY,
+	a_arac_tipi varchar(30)
+);
+create table Araba_Markalari(
+	a_marka_id int PRIMARY KEY,
+	a_marka_adi varchar(30)
+);
+create table Araba_Modelleri(
+	a_model_id int PRIMARY KEY,
+	a_marka_id int,
+	a_model_adi varchar(30),
+	CONSTRAINT fk_a_marka_id
+		FOREIGN KEY(a_marka_id)
+			REFERENCES Araba_Markalari(a_marka_id)
+);
+create table Scooter_Markalari(
+	s_marka_id int PRIMARY KEY,
+	s_marka_adi varchar(30)
+);
+create table Scooter_Modelleri(
+	s_model_id int PRIMARY KEY,
+	s_marka_id int,
+	s_model_adi varchar(30),
+	CONSTRAINT fk_s_marka_id
+		FOREIGN KEY(s_marka_id)
+			REFERENCES Scooter_Markalari(s_marka_id)
+);
+create table Ulkeler(
+	ulke_id int PRIMARY KEY,
+	ulke_adi varchar(50)
+);
+create table Musteriler(
+	m_id int PRIMARY KEY,
+	m_ad_soyad varchar(50),
+	m_yas int,
+	m_tc_no varchar(11),
+	m_telefon varchar(11),
+	m_adres varchar(100),
+	ulke_id int,
+	CONSTRAINT fk_ulke_id
+		FOREIGN KEY(ulke_id)
+			REFERENCES Ulkeler(ulke_id)
+);
+create table Kiralanmis_Arabalar(
+	a_kira_id int PRIMARY KEY,
+	araba_id int,
+	m_id int,
+	a_kiralanma_tarihi date,
+	a_teslim_tarihi date,
+	CONSTRAINT fk_m_id
+		FOREIGN KEY(m_id)
+			REFERENCES Musteriler(m_id)
+);
+create table Kiralanmis_Scooterlar(
+	s_kira_id int PRIMARY KEY,
+	scooter_id int,
+	m_id int,
+	s_kiralanma_tarihi date,
+	s_teslim_tarihi date,
+	CONSTRAINT fk_m_id
+		FOREIGN KEY(m_id)
+			REFERENCES Musteriler(m_id)
+);
+create table Scooterlar(
+	scooter_id int PRIMARY KEY,
+	s_marka_id int,
+	s_model_id int,
+	renk_id int,
+	yakit_id int,
+	s_kira_id int,
+	CONSTRAINT fk_s_marka_id
+		FOREIGN KEY(s_marka_id)
+			REFERENCES Scooter_Markalari(s_marka_id),
+	CONSTRAINT fk_s_model_id
+		FOREIGN KEY(s_model_id)
+			REFERENCES Scooter_Modelleri(s_model_id),
+	CONSTRAINT fk_renk_id
+		FOREIGN KEY(renk_id)
+			REFERENCES Renkler(renk_id),
+	CONSTRAINT fk_yakit_id
+		FOREIGN KEY(yakit_id)
+			REFERENCES Yakit_Turu(yakit_id),
+	CONSTRAINT fk_s_kira_id
+		FOREIGN KEY(s_kira_id)
+			REFERENCES Kiralanmis_Scooterlar(s_kira_id)
+);
+create table Arabalar(
+	araba_id int PRIMARY KEY,
+	a_marka_id int,
+	a_model_id int,
+	renk_id int,
+	a_tipi_id int,
+	arac_yasi int,
+	yakit_id int,
+	a_kira_id int,
+	CONSTRAINT fk_a_marka_id
+		FOREIGN KEY(a_marka_id)
+			REFERENCES Araba_Markalari(a_marka_id),
+	CONSTRAINT fk_a_model_id
+		FOREIGN KEY(a_model_id)
+			REFERENCES Araba_Modelleri(a_model_id),
+	CONSTRAINT fk_renk_id
+		FOREIGN KEY(renk_id)
+			REFERENCES Renkler(renk_id),
+	CONSTRAINT fk_a_tipi_id
+		FOREIGN KEY(a_tipi_id)
+			REFERENCES Araba_Tipi(a_tipi_id),
+	CONSTRAINT fk_yakit_id
+		FOREIGN KEY(yakit_id)
+			REFERENCES Yakit_Turu(yakit_id),
+	CONSTRAINT fk_a_kira_id
+		FOREIGN KEY(a_kira_id)
+			REFERENCES Kiralanmis_Arabalar(a_kira_id)
+);
+Select*from arabalar
